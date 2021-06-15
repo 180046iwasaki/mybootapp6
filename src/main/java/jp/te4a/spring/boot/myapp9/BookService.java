@@ -9,19 +9,22 @@ public class BookService {
   @Autowired
   BookRepository bookRepository;
   public BookForm create(BookForm bookForm) {
-    bookForm.setId(bookRepository.getBookId());
     BookBean bookBean = new BookBean();
     BeanUtils.copyProperties(bookForm, bookBean);
-    bookRepository.create(bookBean);
+    bookRepository.save(bookBean);
     return bookForm;
   }
   public BookForm update(BookForm bookForm) {
     BookBean bookBean = new BookBean();
     BeanUtils.copyProperties(bookForm, bookBean);
-    bookRepository.update(bookBean);
+    bookRepository.save(bookBean);
     return bookForm;
   }
-  public void delete(Integer id) {  delete(BookBean); }
+  public void delete(Integer id) {
+    bookRepository.findById(id).ifPresent(b -> {
+      bookRepository.delete(b);
+    });
+  }
   public List<BookForm> findAll() {
     List<BookBean> beanList = bookRepository.findAll();
     List<BookForm> formList = new ArrayList<BookForm>();
@@ -33,9 +36,10 @@ public class BookService {
     return formList;
     }
   public BookForm findOne(Integer id) {
-    BookBean bookBean = findById(int);
-    BookForm bookForm = new BookForm();
-    BeanUtils.copyProperties(bookBean, bookForm);
+   BookForm bookForm = new BookForm();
+    bookRepository.findById(id).ifPresent(b -> {
+      BeanUtils.copyProperties(b, bookForm);
+    });  
     return bookForm;
   }
 }

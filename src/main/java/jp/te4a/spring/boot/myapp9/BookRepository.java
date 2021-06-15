@@ -1,10 +1,9 @@
 package jp.te4a.spring.boot.myapp9;
 
-import com.xlrit.gears.base.repository.JpaRepository;
-
-import org.springframework.stereotype.Repository;
-
+import org.springframework.data.jpa.repository.JpaRepository;
 public interface BookRepository extends JpaRepository<BookBean, Integer> {
+
+    
 }
 // public BookForm create(BookForm bookForm) {
 //   BookBean bookBean = new BookBean();

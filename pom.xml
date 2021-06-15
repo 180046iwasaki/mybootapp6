@@ -68,15 +68,7 @@
     <artifactId>javax.persistence-api</artifactId>
     <version>2.2</version>
 </dependency>
-
-
-  
-    <dependency>
-      <groupId>com.xlrit.gears.runtime</groupId>
-      <artifactId>gears-runtime-common</artifactId>
-      <version>0.53</version>
-    </dependency>
-  </dependencies>
+</dependencies>
 
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
